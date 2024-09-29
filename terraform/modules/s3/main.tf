@@ -49,7 +49,7 @@ resource "aws_s3_object" "build_files" {
   source = "../../../build/${each.value}"
   etag = filemd5("../../../build/${each.value}")
 
-  content_type = lookup(local.types, regex("\\.[^.]+$", each.value, null))
+  content_type = lookup(local.types, regex("\\.[^.]+$", each.value), null)
 }
 
 locals {
