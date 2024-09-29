@@ -1,0 +1,17 @@
+name: Devel to Stage
+
+on:
+  pull_request: 
+    branches: stage
+
+jobs:
+  check_branch_stage:
+    runs-on: ubuntu-latest
+    steps:
+      - name: check branch
+        if: github.base_ref == 'stage' && github.head_ref != 'devel'
+        run: |
+          echo "Error: no merge from other branches that are not DEVEL"
+          exit 1
+
+         

@@ -1,0 +1,15 @@
+name: Stage to Prod
+
+on:
+  pull_request: 
+    branches: stage
+
+jobs:
+  check_branch_prod:
+    runs-on: ubuntu-latest
+    steps:
+      - name: check branch
+        if: github.base_ref == 'prod' && github.head_ref != 'stage'
+        run: |
+          echo "Error: no merge from other branches that are not STAGE"
+          exit 1
