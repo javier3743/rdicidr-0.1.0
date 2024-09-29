@@ -43,7 +43,7 @@ resource "aws_s3_bucket_policy" "app_bucket" {
 }
 
 resource "aws_s3_object" "build_files" {
-  for_each = fileset("../../../build/${each.value}")
+  for_each = fileset("../../../build/", "**/*")
   bucket = aws_s3_bucket.app_bucket.id
   key = each.value
   source = "../../../build/${each.value}"
