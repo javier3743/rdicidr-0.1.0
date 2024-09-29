@@ -3,6 +3,7 @@ name: Stage to Prod
 on:
   pull_request: 
     branches: stage
+  workflow_dispatch:   
 
 jobs:
   check_branch_prod:

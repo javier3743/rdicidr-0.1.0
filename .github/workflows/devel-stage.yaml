@@ -3,6 +3,7 @@ name: Devel to Stage
 on:
   pull_request: 
     branches: stage
+  workflow_dispatch:     
 
 jobs:
   check_branch_stage:
